@@ -37,7 +37,7 @@ public class MainController {
             response.setStatus(300);
             response.setMessage("The result of your equation is not 24.");
         } else {
-            response.setMessage("you were right.");
+            response.setMessage("you are right.");
             response.setStatus(200);
         }
         response.setResult(game.getResult());

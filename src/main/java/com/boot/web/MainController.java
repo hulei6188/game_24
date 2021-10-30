@@ -28,7 +28,9 @@ public class MainController {
         if (!GameUtil.checkExpression(answer.getExpression())
                 || !GameUtil.useNums(answer.getExpression(), game.getCardsPoint())) {
             response.setStatus(400);
-            response.setMessage("The formula you gave is illegal.");
+            response.setMessage("The formula you give is illegal.");
+            response.setResult(game.getResult());
+
             return response;
         }
         if (!game.judgeInput(answer.getExpression())) {
@@ -37,8 +39,8 @@ public class MainController {
         } else {
             response.setMessage("you were right.");
             response.setStatus(200);
-            response.setResult(game.getResult());
         }
+        response.setResult(game.getResult());
         return response;
 
 

@@ -133,7 +133,11 @@ public class GameUtil {
     }
 
     public static boolean useNums(String input, int[] nums) {
-
+        int[] map = new int[13];
+        for (int num : nums) {
+            map[num - 1]++;
+        }
+//        System.out.println(Arrays.toString(map));
         int i = 0;
         while (i < input.length()) {
             int num = 0;
@@ -142,18 +146,17 @@ public class GameUtil {
                 i++;
             }
             if (num != 0) {
-                boolean exist = false;
-                for (int n : nums) {
-                    if (n == num) {
-                        exist = true;
-                        break;
-                    }
-                }
-                if (!exist)
-                    return false;
+                if (num > 0 && num <= 13)
+                    map[num - 1]--;
                 i--;
             }
             i++;
+        }
+
+        for (int num :
+                map) {
+            if (num != 0)
+                return false;
         }
         return true;
     }
